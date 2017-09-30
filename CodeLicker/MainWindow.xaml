@@ -3,10 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:CodeLicker.Properties"
+        xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
         xmlns:local="clr-namespace:CodeLicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="{x:Static p:Resources.WindowTitle}"
+        WindowStartupLocation="CenterScreen" 
+        Background="Red"
+        WindowStyle="None"
+		ResizeMode="NoResize">
+    <!--WindowState="Maximized"-->
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome ResizeBorderThickness="6" CaptionHeight="25" CornerRadius="0,0,0,0" GlassFrameThickness="0" />
+    </shell:WindowChrome.WindowChrome>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid SnapsToDevicePixels="True" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+            </Grid.ColumnDefinitions>
+
+            
+            <Canvas Grid.Column="0" Height="25" Width="25" Margin="0" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                <!--<Path Stroke="White" Fill="Transparent" Data="M 4.5 20 a 2 2 0 1 0 0.00001 0 Z" SnapsToDevicePixels="True" Margin="0" UseLayoutRounding="True" />-->
+                <Path Stroke="Transparent" Fill="White" Data="M4 22 L20 22 L20 2 L16 6 L16 18 L8 18 Z" SnapsToDevicePixels="True" Margin="0" UseLayoutRounding="True" />
+            </Canvas>
+            <Label Grid.Column="1" Content="{x:Static p:Resources.WindowTitle}" HorizontalAlignment="Left" Foreground="White" />
+
+        </Grid>
+        <Frame Name="FrmMenu" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="Views/Menu.xaml" NavigationUIVisibility="Hidden" />
+        <Frame Name="FrmMain" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="White" />
+
     </Grid>
 </Window>

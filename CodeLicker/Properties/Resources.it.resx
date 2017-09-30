@@ -118,15 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Exit" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="File" xml:space="preserve">
-    <value>File</value>
+    <value>Esci</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Impostazioni</value>
   </data>
   <data name="WindowTitle" xml:space="preserve">
-    <value>CodeLicker</value>
+    <value>LeccaCodice</value>
   </data>
 </root>

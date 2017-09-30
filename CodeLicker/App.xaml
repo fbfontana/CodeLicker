@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:CodeLicker"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+       
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style TargetType="{x:Type Menu}">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        
     </Application.Resources>
 </Application>

@@ -1,0 +1,18 @@
+﻿<Page x:Class="CodeLicker.Views.Menu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:resx="clr-namespace:CodeLicker.Properties"
+      mc:Ignorable="d" Title="Menu">
+    <Grid>
+        <Menu>
+            <MenuItem  Header="{x:Static resx:Resources.File}">
+                <MenuItem Header="{x:Static resx:Resources.WindowTitle}" Click="MenuItem_Click" />
+                <MenuItem Name="MnuSettings" Header="{x:Static resx:Resources.Settings}" Click="MnuSettings_Click" />
+                <Separator />
+                <MenuItem Name="MnuQuit" Header="{x:Static resx:Resources.Exit}" Click="MnuQuit_Click"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Page>

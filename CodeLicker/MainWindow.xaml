@@ -7,44 +7,29 @@
         xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
         xmlns:local="clr-namespace:CodeLicker"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.WindowTitle}"
-        WindowStartupLocation="CenterScreen" 
-        Background="#CF000F"
+        WindowStartupLocation="CenterScreen" Background="#CF000F"
         WindowStyle="None" WindowState="Maximized" Activated="Window_Activated" StateChanged="Window_StateChanged">
 
-    <Window.Resources>
-        <ControlTemplate x:Key="CaptionBarButton" TargetType="{x:Type Button}">
-            <Grid Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="25" Height="25" shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                <Rectangle Stroke="White" x:Name="BackgroundRectangle" Fill="#F22613" Width="20" Height="20" Opacity="0" Margin="0,0,3,0" HorizontalAlignment="Right"/>
-                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Content"/>
-            </Grid>
-            <ControlTemplate.Triggers>
-                <Trigger SourceName="BackgroundRectangle" Property="IsMouseOver" Value="True">
-                    <Setter TargetName="BackgroundRectangle" Property="Opacity" Value="1" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-    </Window.Resources>
 
     <shell:WindowChrome.WindowChrome>
-        <shell:WindowChrome ResizeBorderThickness="6" CaptionHeight="25" CornerRadius="0,0,0,0" GlassFrameThickness="0" />
+        <shell:WindowChrome ResizeBorderThickness="6" CaptionHeight="30" CornerRadius="0,0,0,0" GlassFrameThickness="1" />
     </shell:WindowChrome.WindowChrome>
 
     <Grid Name="GrdRoot">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7" Name="FirstColumn"/>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="7" Name="LastColumn"/>
+            <ColumnDefinition Width="9" Name="LastColumn"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7" Name="FirstRow" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="9" Name="FirstRow" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="25" />
             <RowDefinition Height="2*" />
-            <RowDefinition Height="7" Name="LastRow" />
+            <RowDefinition Height="9" Name="LastRow" />
         </Grid.RowDefinitions>
 
-        <Grid SnapsToDevicePixels="True" Grid.Row="1" Grid.Column="1">
+        <Grid Name="TitleBar" SnapsToDevicePixels="True" Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25" />
                 <ColumnDefinition Width="*" />
@@ -56,25 +41,26 @@
             <Canvas Grid.Column="0" Height="25" Width="25" Margin="0" SnapsToDevicePixels="True" UseLayoutRounding="True">
                 <Path Stroke="Transparent" Fill="White" Data="M4 22 L20 22 L20 2 L16 6 L16 18 L8 18 Z" SnapsToDevicePixels="True" Margin="0" UseLayoutRounding="True" />
             </Canvas>
-            <Label Grid.Column="1" Content="{x:Static p:Resources.WindowTitle}" HorizontalAlignment="Left" Foreground="White" />
+            <Label Name="Title" Grid.Column="1" Content="{x:Static p:Resources.WindowTitle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="30" Foreground="White" VerticalContentAlignment="Bottom" />
 
             <Button Name="BtnMinimize" Grid.Column="2" Template="{StaticResource CaptionBarButton}" Click="BtnMinimize_Click">
                 <Button.Content>
-                    <Path Data="M8,16 L16,16"  Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False"/>
+                    <Path Data="M8,16 L16,16"  Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
                 </Button.Content>
             </Button>
             <Button Name="BtnMaximize" Grid.Column="3" Template="{StaticResource CaptionBarButton}" Click="BtnMaximize_Click">
                 <Button.Content>
-                    <Path Name="BtnMaximizePath" Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False"/>
+                    <Path Name="BtnMaximizePath" Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
                 </Button.Content>
             </Button>
             <Button Name="BtnClose" Grid.Column="4" Template="{StaticResource CaptionBarButton}" Click="BtnClose_Click">
                 <Button.Content>
-                    <Path Data="M8,16 L16,8 M16,16 L8,8 " Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False"/>
+                    <Path Data="M8,16 L16,8 M16,16 L8,8 " Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
                 </Button.Content>
             </Button>
 
         </Grid>
+        
         <Frame Name="FrmMenu" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="Views/Menu.xaml" NavigationUIVisibility="Hidden" />
         <Frame Name="FrmMain" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="White" />
 

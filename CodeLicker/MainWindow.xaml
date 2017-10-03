@@ -61,8 +61,8 @@
 
         </Grid>
         
-        <Frame Name="FrmMenu" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="Views/Menu.xaml" NavigationUIVisibility="Hidden" />
-        <Frame Name="FrmMain" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Background="White" />
+        <Frame Name="FrmMenu" Grid.Row="2" Source="Views/Menu.xaml"/>
+        <Frame Name="FrmMain" Grid.Row="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#6C7A89" />
 
     </Grid>
 </Window>

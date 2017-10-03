@@ -6,6 +6,13 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <Style TargetType="{x:Type Frame}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="NavigationUIVisibility" Value="Hidden" />
+        </Style>
+        
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="Height" Value="25" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />

@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CodeLicker.ViewModels;
 
 namespace CodeLicker.Helpers
 {
-    public class DelegateCommand : ICommand
+    public class SingleActiviyDelegateCommand : ICommand
     {
-        private readonly Action _Action;
+        private readonly Action<ActivityVM> _Action;
 
-        public DelegateCommand(Action action)
+        public SingleActiviyDelegateCommand(Action<ActivityVM> action)
         {
             _Action = action;
         }
 
         public void Execute(object parameter)
         {
-            _Action();
+            _Action(parameter as ActivityVM);
         }
 
         public bool CanExecute(object parameter)

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CodeLicker.Views"
       xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
       >
     
     <UserControl.DataContext>

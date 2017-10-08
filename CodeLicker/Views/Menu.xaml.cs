@@ -43,7 +43,7 @@ namespace CodeLicker.Views
 
             if (pageFrame != null)
             {
-                ((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain.Source = new Uri("Views/Documents.xaml", UriKind.Relative);
+                ((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain.Source = new Uri("Views/WorkingArea.xaml", UriKind.Relative);
             }
         }
 

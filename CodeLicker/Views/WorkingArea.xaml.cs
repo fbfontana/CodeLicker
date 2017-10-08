@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CodeLicker.Views
 {
     /// <summary>
-    /// Interaction logic for Documents.xaml
+    /// Interaction logic for WorkingArea.xaml
     /// </summary>
-    public partial class Documents : Page
+    public partial class WorkingArea : Page
     {
-        public Documents()
+        public WorkingArea()
         {
             InitializeComponent();
         }

@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
              xmlns:local="clr-namespace:CodeLicker"
+             xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
+             xmlns:Views="clr-namespace:CodeLicker.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
@@ -36,6 +38,10 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <DataTemplate DataType="{x:Type ViewModels:WelcomeActivityVM}">
+            <Views:Welcome />
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

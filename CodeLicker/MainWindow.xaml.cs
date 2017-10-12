@@ -28,6 +28,7 @@ namespace CodeLicker
         public MainWindow()
         {
             InitializeComponent();
+            FrmMain.Source = new Uri("Views/WorkingArea.xaml", UriKind.Relative);
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)

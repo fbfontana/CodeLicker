@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:resx="clr-namespace:CodeLicker.Properties"
-      mc:Ignorable="d" Title="Menu">
+      mc:Ignorable="d" Title="Menu"
+      >
+
     <Grid>
         <Menu>
             <MenuItem  Header="{x:Static resx:Resources.File}">
-                <MenuItem Header="{x:Static resx:Resources.WindowTitle}" Click="MenuItem_Click" />
+                <MenuItem Header="{x:Static resx:Resources.Open}" >
+                    <MenuItem Header="{x:Static resx:Resources.File}" Click="MenuItem_Click" >
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem Name="MnuSettings" Header="{x:Static resx:Resources.Settings}" Click="MnuSettings_Click" />
                 <Separator />
                 <MenuItem Name="MnuQuit" Header="{x:Static resx:Resources.Exit}" Click="MnuQuit_Click"/>

@@ -36,7 +36,7 @@ namespace CodeLicker.ViewModels
         #region Constructors
         public WorkingAreaVM()
         {
-            Items = new ObservableCollection<ActivityVM>() { new WelcomeActivityVM() };
+            Items = new ObservableCollection<ActivityVM>() { new WelcomeActivityVM()};
         }
         #endregion
 

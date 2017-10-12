@@ -8,7 +8,14 @@
         xmlns:local="clr-namespace:CodeLicker"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" Background="#CF000F"
-        WindowStyle="None" WindowState="Maximized" Activated="Window_Activated" StateChanged="Window_StateChanged">
+        WindowStyle="None" WindowState="Maximized" 
+        TextOptions.TextFormattingMode="Display" 
+        UseLayoutRounding="True"
+        RenderOptions.BitmapScalingMode="NearestNeighbor"
+        SnapsToDevicePixels="True"
+        RenderOptions.ClearTypeHint="Enabled"
+        Activated="Window_Activated" StateChanged="Window_StateChanged"
+        >
 
 
     <shell:WindowChrome.WindowChrome>
@@ -60,9 +67,9 @@
             </Button>
 
         </Grid>
-        
+
         <Frame Name="FrmMenu" Grid.Row="2" Source="Views/Menu.xaml"/>
-        <Frame Name="FrmMain" Grid.Row="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#6C7A89" />
+        <Frame Name="FrmMain" Grid.Row="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#6C7A89"  />
 
     </Grid>
 </Window>

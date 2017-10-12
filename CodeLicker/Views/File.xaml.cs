@@ -12,18 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CodeLicker.Helpers;
 
 namespace CodeLicker.Views
 {
     /// <summary>
-    /// Interaction logic for WorkingArea.xaml
+    /// Interaction logic for File.xaml
     /// </summary>
-    public partial class WorkingArea : Page
+    public partial class File : UserControl
     {
-        public WorkingArea()
+        public File()
         {
             InitializeComponent();
         }
-        
     }
 }

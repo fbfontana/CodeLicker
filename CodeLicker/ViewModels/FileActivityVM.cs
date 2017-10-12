@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,19 @@ using CodeLicker.ViewModels;
 
 namespace CodeLicker.ViewModels
 {
-    public class WelcomeActivityVM : ActivityVM
+    public class FileActivityVM : ActivityVM
     {
         #region Constants
-        readonly string ActivityName = Resources.Welcome;
+        readonly string ActivityName = Resources.File;
         #endregion
-        public WelcomeActivityVM()
+        public FileActivityVM()
         {
             TabName = ActivityName;
+        }
+
+        public FileActivityVM(string filename) : this()
+        {
+            TabName = Path.GetFileName(filename);
         }
     }
 }

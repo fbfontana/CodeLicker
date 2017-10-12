@@ -7,18 +7,24 @@
              xmlns:Views="clr-namespace:CodeLicker.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        
+        <!--<Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>-->
+        
         <Style TargetType="{x:Type Frame}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="NavigationUIVisibility" Value="Hidden" />
         </Style>
-        
+
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="Height" Value="25" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
+        
         <Style TargetType="{x:Type Menu}">
             <Setter Property="Height" Value="25" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -41,6 +47,9 @@
 
         <DataTemplate DataType="{x:Type ViewModels:WelcomeActivityVM}">
             <Views:Welcome />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:FileActivityVM}">
+            <Views:File />
         </DataTemplate>
 
     </Application.Resources>

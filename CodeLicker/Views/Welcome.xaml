@@ -6,15 +6,14 @@
       xmlns:local="clr-namespace:CodeLicker.Views"
       xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
       mc:Ignorable="d" 
-      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-      >
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <!--Height="800" Width="800"-->
     
     <UserControl.DataContext>
         <ViewModels:WelcomeActivityVM />
     </UserControl.DataContext>
-    
-    <Grid Name="TabContent">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="148,135,0,0" VerticalAlignment="Top" Width="75"/>
+
+    <Grid Name="TabContent" Background="White">
 
     </Grid>
 </UserControl>

@@ -120,8 +120,14 @@
   <data name="Exit" xml:space="preserve">
     <value>Esci</value>
   </data>
+  <data name="Open" xml:space="preserve">
+    <value>Apri</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Benvenuto</value>
   </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>LeccaCodice</value>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CodeLicker.ViewModels;
 
 namespace CodeLicker.Views
 {
@@ -21,6 +22,9 @@ namespace CodeLicker.Views
     /// </summary>
     public partial class Menu : Page
     {
+        private WorkingAreaVM WorkingAreaVM;
+        private WorkingArea WorkingAreaV;
+
         public Menu()
         {
             InitializeComponent();
@@ -28,10 +32,46 @@ namespace CodeLicker.Views
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            SwitchLanguage();
+
+            InitializeWorkingArea();
+            string Filename = OpenFile();
+            if (Filename.Length == 0)
+            {
+                return;
+            }
+
+            AddActivity(new FileActivityVM(Filename));
+        }
+
+        private void AddActivity(ActivityVM activity)
+        {
+            WorkingAreaVM.Items.Add(activity);
+            WorkingAreaV.TabActivity.SelectedIndex = WorkingAreaV.TabActivity.Items.Count - 1;
+        }
+
+        private string OpenFile()
+        {
+            var OpenFileDialog = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog.DefaultExt = ".cs";
+            OpenFileDialog.Filter = "C Sharp Files (*.cs)|*.cs|All Files (*.*)|*.*";
+
+            if (OpenFileDialog.ShowDialog() == true)
+            {
+                return OpenFileDialog.FileName;
+            }
+            return string.Empty;
+        }
+
+        private void SwitchLanguage()
+        {
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("it-IT");
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("it-IT");
             NavigationService.Navigate(new Uri("Views/Menu.xaml", UriKind.Relative));
+        }
 
+        private void InitializeWorkingArea()
+        {
             Frame pageFrame = null;
             var currParent = VisualTreeHelper.GetParent(this);
 
@@ -43,7 +83,8 @@ namespace CodeLicker.Views
 
             if (pageFrame != null)
             {
-                ((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain.Source = new Uri("Views/WorkingArea.xaml", UriKind.Relative);
+                WorkingAreaVM = (((((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain).Content as WorkingArea).DataContext as WorkingAreaVM);
+                WorkingAreaV = ((((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain).Content as WorkingArea);
             }
         }
 

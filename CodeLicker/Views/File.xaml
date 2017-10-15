@@ -3,26 +3,46 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p="clr-namespace:CodeLicker.Properties"
       xmlns:local="clr-namespace:CodeLicker.Views"
       xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
       mc:Ignorable="d" 
-      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+      >
 
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 
-    <UserControl.DataContext>
-        <ViewModels:FileActivityVM />
-    </UserControl.DataContext>
+        <Grid Name="TabContent" Background="White" MinWidth="600">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="600*"/>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
 
-    <Grid Name="TabContent" Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="600*"/>
-            <ColumnDefinition Width="23*"/>
-        </Grid.ColumnDefinitions>
-        
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="4,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="606" Grid.Column="2"/>
-        <Label Content="Label" HorizontalAlignment="Right" Margin="7,28,0,0" VerticalAlignment="Top" Width="132" Grid.Column="1"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                     Text="{x:Static p:Resources.CodeAnalysisReport}" 
+                     HorizontalContentAlignment="Center"
+                     BorderThickness="0"
+                     Style="{DynamicResource LatoLight}" Foreground="#CF000F"
+                     FontSize="36"/>
+            <Separator Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#CF000F"/>
+            <Label Content="Path" Foreground="#CF000F" 
+               HorizontalAlignment="Stretch" VerticalAlignment="Top"
+               Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Right" />
+            <TextBox Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+               HorizontalAlignment="Stretch" VerticalAlignment="Top"
+               Grid.Row="3" Grid.Column="2" Height="20"  TextWrapping="Wrap" Margin="5,4,-5,0"/>
 
-    </Grid>
+        </Grid>
+
+    </ScrollViewer>
 </UserControl>

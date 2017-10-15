@@ -12,7 +12,14 @@
             <Setter Property="FontFamily" Value="Calibri" />
             <Setter Property="FontSize" Value="14" />
         </Style>-->
-        
+        <!--<FontFamily x:Key="YourFontNickName">pack://application:,,,./Fonts/#Lato-Hairline</FontFamily>-->
+        <Style x:Key="LatoHairline">
+            <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/Fonts/#Lato Hairline"/>
+        </Style>
+        <Style x:Key="LatoLight">
+            <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/Fonts/#Lato Light"/>
+        </Style>
+
         <Style TargetType="{x:Type Frame}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />

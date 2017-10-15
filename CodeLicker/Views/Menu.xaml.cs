@@ -34,7 +34,7 @@ namespace CodeLicker.Views
         {
             SwitchLanguage();
 
-            InitializeWorkingArea();
+            UpdateWorkingArea();
             string Filename = OpenFile();
             if (Filename.Length == 0)
             {
@@ -47,7 +47,7 @@ namespace CodeLicker.Views
         private void AddActivity(ActivityVM activity)
         {
             WorkingAreaVM.Items.Add(activity);
-            WorkingAreaV.TabActivity.SelectedIndex = WorkingAreaV.TabActivity.Items.Count - 1;
+            WorkingAreaV.TabActivities.SelectedIndex = WorkingAreaV.TabActivities.Items.Count - 1;
         }
 
         private string OpenFile()
@@ -70,21 +70,21 @@ namespace CodeLicker.Views
             NavigationService.Navigate(new Uri("Views/Menu.xaml", UriKind.Relative));
         }
 
-        private void InitializeWorkingArea()
+        private void UpdateWorkingArea()
         {
-            Frame pageFrame = null;
-            var currParent = VisualTreeHelper.GetParent(this);
+            Frame PageFrame = null;
+            var CurrentParent = VisualTreeHelper.GetParent(this);
 
-            while (currParent != null && pageFrame == null)
+            while (CurrentParent != null && PageFrame == null)
             {
-                pageFrame = currParent as Frame;
-                currParent = VisualTreeHelper.GetParent(currParent);
+                PageFrame = CurrentParent as Frame;
+                CurrentParent = VisualTreeHelper.GetParent(CurrentParent);
             }
 
-            if (pageFrame != null)
+            if (PageFrame != null)
             {
-                WorkingAreaVM = (((((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain).Content as WorkingArea).DataContext as WorkingAreaVM);
-                WorkingAreaV = ((((MainWindow)((Grid)pageFrame.Parent).Parent).FrmMain).Content as WorkingArea);
+                WorkingAreaVM = (((((MainWindow)((Grid)PageFrame.Parent).Parent).FrmMain).Content as WorkingArea).DataContext as WorkingAreaVM);
+                WorkingAreaV = ((((MainWindow)((Grid)PageFrame.Parent).Parent).FrmMain).Content as WorkingArea);
             }
         }
 
@@ -96,6 +96,15 @@ namespace CodeLicker.Views
         private void MnuSettings_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_AboutClick(object sender, RoutedEventArgs e)
+        {
+            UpdateWorkingArea();
+            if (WorkingAreaVM.Items.Where(f => f is WelcomeActivityVM).Count() == 0)
+            {
+                AddActivity(new WelcomeActivityVM());
+            }
         }
     }
 }

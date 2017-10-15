@@ -18,6 +18,9 @@
                 <Separator />
                 <MenuItem Name="MnuQuit" Header="{x:Static resx:Resources.Exit}" Click="MnuQuit_Click"/>
             </MenuItem>
+            <MenuItem  Header="{x:Static resx:Resources.Help}">
+                <MenuItem Header="{x:Static resx:Resources.About}" Click="MenuItem_AboutClick" />
+            </MenuItem>
         </Menu>
     </Grid>
 </Page>

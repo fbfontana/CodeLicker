@@ -9,9 +9,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" Background="#CF000F"
         WindowStyle="None" WindowState="Maximized" 
-        TextOptions.TextFormattingMode="Display" 
-        UseLayoutRounding="True"
-        RenderOptions.BitmapScalingMode="NearestNeighbor"
+      
         SnapsToDevicePixels="True"
         RenderOptions.ClearTypeHint="Enabled"
         Activated="Window_Activated" StateChanged="Window_StateChanged"

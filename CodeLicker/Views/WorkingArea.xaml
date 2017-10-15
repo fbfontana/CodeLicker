@@ -6,15 +6,15 @@
       xmlns:local="clr-namespace:CodeLicker.Views"
       xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
       mc:Ignorable="d" x:Name="WorkingAreaView"
-      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-      >
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
     <Page.DataContext>
         <ViewModels:WorkingAreaVM />
     </Page.DataContext>
 
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <Grid Name="GrdWorkingArea" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
         <Grid.Resources>
+            
             <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="Height" Value="14"/>
                 <Setter Property="Width" Value="14"/>
@@ -73,42 +73,65 @@
             <ColumnDefinition Width="15" />
         </Grid.ColumnDefinitions>
 
-        <TabControl Name="TabActivity"
+        <Border Name="BorLeftMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+        <Border Name="BorTopMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="1" Grid.Row="0" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+        <Border Name="BorRightMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+        <Border Name="BorBottomMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="1" Grid.Row="2" AllowDrop="True" 
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+        <TabControl Name="TabActivities" Background="Transparent"
                     Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0"
-                    Background="Transparent" BorderBrush="White" Margin="0" Padding="0"
+                    BorderBrush="White" Margin="0" Padding="0"
                     ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}">
 
             <TabControl.Resources>
+                
+                <Style TargetType="{x:Type TabControl}">
+                    <Setter Property="AllowDrop" Value="True"/>
+                    <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
+                    <EventSetter Event="Drop" Handler="TabItem_Drop"/>
+                </Style>
+                
                 <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="AllowDrop" Value="True"/>
+                    <EventSetter Event="MouseMove" Handler="TabItem_PreviewMouseMove"/>
+                    <EventSetter Event="Drop" Handler="TabItem_Drop"/>
+
                     <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="-2,-2,0,0" />
                     <Setter Property="Template">
                         <Setter.Value>
-                            <ControlTemplate  TargetType="{x:Type TabItem}">
-                                <Grid >
-
-
-                                    <!--<Path x:Name="TabPath" StrokeThickness="2"
-                              Margin="2"
-                              Stroke="PaleVioletRed"
-                              Fill="Yellow">
-                                        <Path.Data>
-                                            <PathGeometry Figures="M 0,0 L 0,14 C 0,18 2,20 6,20 L 60,20 C 70,20 80,0 84,0">
-                                                
-                                            </PathGeometry>
-                                        </Path.Data>
-                                        <Path.LayoutTransform>
-                                            <ScaleTransform ScaleY="-1"/>
-                                        </Path.LayoutTransform>
-                                    </Path>-->
-
-
-                                    <Border Name="Border" Margin="-2,0,8,0" BorderThickness="0" >
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                <Grid Name="GrdActivities" Background="Transparent">
+                                    <Border Name="Border" Margin="0,0,0,0" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                                         <StackPanel Orientation="Horizontal" >
                                             <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2" RecognizesAccessKey="True"/>
-                                            <Button Name="CloseButton" Command="{Binding  ElementName=WorkingAreaView , Path=DataContext.CloseTabCommand}" 
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabItem}}, Path=DataContext}" Style="{StaticResource CloseButtonStyle}">
+                                            <Button Name="CloseButton" 
+                                                    Command="{Binding  ElementName=WorkingAreaView , Path=DataContext.CloseTabCommand}" 
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabItem}}, Path=DataContext}" 
+                                                    Style="{StaticResource CloseButtonStyle}" >
                                             </Button>
+                                            <Border Name="BorSingleActivity"
+                                                    HorizontalAlignment="Stretch" Width="8" Background="#6C7A89" Margin="0,0,-4,0" 
+                                                    AllowDrop="True" 
+                                                    PreviewMouseMove="TabItem_PreviewMouseMove"
+                                                    Drop="TabItem_Drop">
+                                            </Border>
                                         </StackPanel>
                                     </Border>
                                 </Grid>
@@ -142,6 +165,7 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
+                
             </TabControl.Resources>
             <TabControl.ItemTemplate>
                 <DataTemplate>

@@ -61,6 +61,24 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About CodeLicker.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code Analysis Report.
+        /// </summary>
+        public static string CodeAnalysisReport {
+            get {
+                return ResourceManager.GetString("CodeAnalysisReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
@@ -75,6 +93,15 @@ namespace CodeLicker.Properties {
         public static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         

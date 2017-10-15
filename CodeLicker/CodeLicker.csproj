@@ -140,6 +140,8 @@
       <LastGenOutput>Resources.it.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Resource Include="Fonts\Lato 100.ttf" />
+    <Resource Include="Fonts\Lato 300.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

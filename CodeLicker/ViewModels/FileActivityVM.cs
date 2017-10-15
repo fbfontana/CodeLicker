@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,27 @@ namespace CodeLicker.ViewModels
         #region Constants
         readonly string ActivityName = Resources.File;
         #endregion
+        #region Fields
+        string _FilePath = string.Empty;
+        #endregion
+        #region Properties
+        public string FilePath
+        {
+            get
+            {
+                return _FilePath;
+            }
+            set
+            {
+                if (_FilePath == value)
+                {
+                    return;
+                }
+                _FilePath = value;
+                OnPropertyChanged(nameof(FilePath));
+            }
+        }
+        #endregion
         public FileActivityVM()
         {
             TabName = ActivityName;
@@ -22,6 +44,7 @@ namespace CodeLicker.ViewModels
         public FileActivityVM(string filename) : this()
         {
             TabName = Path.GetFileName(filename);
+            FilePath = filename;
         }
     }
 }

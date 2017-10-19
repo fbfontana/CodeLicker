@@ -14,6 +14,7 @@
     </UserControl.DataContext>
 
     <Grid Name="TabContent" Background="White">
+        <WebBrowser Name="WelcomePage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
     </Grid>
 </UserControl>

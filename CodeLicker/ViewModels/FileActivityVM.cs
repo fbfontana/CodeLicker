@@ -17,6 +17,7 @@ namespace CodeLicker.ViewModels
         #endregion
         #region Fields
         string _FilePath = string.Empty;
+        string _Extension = string.Empty;
         #endregion
         #region Properties
         public string FilePath
@@ -35,6 +36,22 @@ namespace CodeLicker.ViewModels
                 OnPropertyChanged(nameof(FilePath));
             }
         }
+        public string Extension
+        {
+            get
+            {
+                return _Extension;
+            }
+            set
+            {
+                if (_Extension == value)
+                {
+                    return;
+                }
+                _Extension = value;
+                OnPropertyChanged(nameof(Extension));
+            }
+        }
         #endregion
         public FileActivityVM()
         {
@@ -45,6 +62,9 @@ namespace CodeLicker.ViewModels
         {
             TabName = Path.GetFileName(filename);
             FilePath = filename;
+            Extension = Path.GetExtension(filename).ToUpper().Equals(".CS") ? Resources._CS : "";
+
+
         }
     }
 }

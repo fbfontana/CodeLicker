@@ -61,6 +61,15 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C# file.
+        /// </summary>
+        public static string _CS {
+            get {
+                return ResourceManager.GetString("_CS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About CodeLicker.
         /// </summary>
         public static string About {

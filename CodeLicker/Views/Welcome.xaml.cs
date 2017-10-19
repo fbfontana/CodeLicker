@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CodeLicker.Helpers;
+using System.Configuration;
+using System.IO;
 
 namespace CodeLicker.Views
 {
@@ -24,6 +26,11 @@ namespace CodeLicker.Views
         public Welcome()
         {
             InitializeComponent();
+
+            string applicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string myFile = System.IO.Path.Combine(applicationDirectory, ConfigurationManager.AppSettings["WelcomeUrl"]);
+
+            WelcomePage.Navigate(new Uri( myFile));
         }
     }
 }

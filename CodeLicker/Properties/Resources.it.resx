@@ -141,4 +141,7 @@
   <data name="WindowTitle" xml:space="preserve">
     <value>LeccaCodice</value>
   </data>
+  <data name="_CS" xml:space="preserve">
+    <value>File C#</value>
+  </data>
 </root>

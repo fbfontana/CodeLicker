@@ -17,30 +17,41 @@
                 <RowDefinition Height="15" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="15" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="150*"/>
-                <ColumnDefinition Width="600*"/>
-                <ColumnDefinition Width="150*"/>
-                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" 
                      Text="{x:Static p:Resources.CodeAnalysisReport}" 
                      HorizontalContentAlignment="Center"
                      BorderThickness="0"
                      Style="{DynamicResource LatoLight}" Foreground="#CF000F"
                      FontSize="36"/>
-            <Separator Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#CF000F"/>
+            <Separator Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Background="#CF000F"/>
+
             <Label Content="Path" Foreground="#CF000F" 
                HorizontalAlignment="Stretch" VerticalAlignment="Top"
                Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Right" />
             <TextBox Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+               HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20"  TextWrapping="NoWrap" Margin="5,4,-5,0"
+               Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+
+            <Label Content="File type" Foreground="#CF000F" 
                HorizontalAlignment="Stretch" VerticalAlignment="Top"
-               Grid.Row="3" Grid.Column="2" Height="20"  TextWrapping="Wrap" Margin="5,4,-5,0"/>
+               Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Right" />
+            <TextBox Text="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+               HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20"  TextWrapping="NoWrap" Margin="5,4,-5,0"
+               Grid.Row="4" Grid.Column="2" />
 
         </Grid>
 

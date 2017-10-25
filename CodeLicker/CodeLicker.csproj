@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\SingleClassDelegateCommand.cs" />
     <Compile Include="Helpers\SingleActiviyDelegateCommand.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
@@ -73,11 +74,19 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ViewModels\ActivityVM.cs" />
+    <Compile Include="ViewModels\ClassActivityVM.cs" />
     <Compile Include="ViewModels\FileActivityVM.cs" />
+    <Compile Include="ViewModels\LicenseActivityVM.cs" />
     <Compile Include="ViewModels\WorkingAreaVM.cs" />
     <Compile Include="ViewModels\WelcomeActivityVM.cs" />
+    <Compile Include="Views\Class.xaml.cs">
+      <DependentUpon>Class.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\File.xaml.cs">
       <DependentUpon>File.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\License.xaml.cs">
+      <DependentUpon>License.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
@@ -100,7 +109,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Class.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\File.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\License.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -161,12 +178,72 @@
     <Resource Include="Images\CodeLicker.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Html\images\black.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\images\facebook.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\images\googleplus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\images\twitter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\MIT License - Wikipedia.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Html\MIT License - Wikipedia_files\12px-Commons-logo.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Html\MIT License - Wikipedia_files\16px-Folder_Hexagonal_Icon.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Html\MIT License - Wikipedia_files\16px-Portal-puzzle.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Html\MIT License - Wikipedia_files\16px-Symbol_book_class2.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Html\MIT License - Wikipedia_files\28px-Free_and_open-source_software_logo_%282009%29.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Html\MIT License - Wikipedia_files\load%281%29.php">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\MIT License - Wikipedia_files\load%282%29.php">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\MIT License - Wikipedia_files\load%283%29.php">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\MIT License - Wikipedia_files\load%284%29.php">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\MIT License - Wikipedia_files\load.php">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Html\MIT License - Wikipedia_files\poweredby_mediawiki_88x31.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Html\MIT License - Wikipedia_files\wikimedia-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Html\Welcome.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\CodeLickerIco.svg" />
     <SplashScreen Include="Images\CodeLickerSplashScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CLAnalizer\CLAnalyzer.csproj">
+      <Project>{82e81997-9f79-4ac8-aede-53a049312ea1}</Project>
+      <Name>CLAnalyzer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

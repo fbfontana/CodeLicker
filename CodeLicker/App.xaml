@@ -52,11 +52,17 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
+        <DataTemplate DataType="{x:Type ViewModels:LicenseActivityVM}">
+            <Views:License />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:WelcomeActivityVM}">
             <Views:Welcome />
         </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:FileActivityVM}">
             <Views:File />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:ClassActivityVM}">
+            <Views:Class />
         </DataTemplate>
 
     </Application.Resources>

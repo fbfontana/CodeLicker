@@ -120,26 +120,47 @@
   <data name="About" xml:space="preserve">
     <value>Informazioni su CodeLicker</value>
   </data>
+  <data name="ClassName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
   <data name="CodeAnalysisReport" xml:space="preserve">
     <value>Analisi del codice</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Esci</value>
   </data>
+  <data name="FileType" xml:space="preserve">
+    <value>Tipo di file</value>
+  </data>
   <data name="Help" xml:space="preserve">
     <value>Aiuto</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>Informazioni sulla licenza</value>
+  </data>
+  <data name="MethodTotal" xml:space="preserve">
+    <value>Totale metodi</value>
   </data>
   <data name="Open" xml:space="preserve">
     <value>Apri</value>
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Percorso</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>
+  </data>
+  <data name="Valid" xml:space="preserve">
+    <value>Valido</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Benvenuto</value>
   </data>
   <data name="WindowTitle" xml:space="preserve">
     <value>LeccaCodice</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sì</value>
   </data>
   <data name="_CS" xml:space="preserve">
     <value>File C#</value>

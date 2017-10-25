@@ -13,28 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CodeLicker.Helpers;
-using System.Configuration;
-using System.IO;
-using System.ComponentModel;
 
 namespace CodeLicker.Views
 {
     /// <summary>
-    /// Interaction logic for Welcome.xaml
+    /// Interaction logic for Class.xaml
     /// </summary>
-    public partial class Welcome : UserControl
+    public partial class Class : UserControl
     {
-        public Welcome()
+        public Class()
         {
             InitializeComponent();
-
-            if (DesignerProperties.GetIsInDesignMode(this))
-                return;
-
-            string applicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string myFile = System.IO.Path.Combine(applicationDirectory, ConfigurationManager.AppSettings["WelcomeUrl"]);
-
-            WelcomePage.Navigate(new Uri( myFile));
         }
     }
 }

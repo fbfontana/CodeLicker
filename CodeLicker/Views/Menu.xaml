@@ -20,6 +20,8 @@
             </MenuItem>
             <MenuItem  Header="{x:Static resx:Resources.Help}">
                 <MenuItem Header="{x:Static resx:Resources.About}" Click="MenuItem_AboutClick" />
+                <Separator />
+                <MenuItem Header="{x:Static resx:Resources.License}" Click="MenuItem_LicenseClick" />
             </MenuItem>
         </Menu>
     </Grid>

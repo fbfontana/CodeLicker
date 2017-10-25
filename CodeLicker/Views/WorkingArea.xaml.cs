@@ -40,7 +40,6 @@ namespace CodeLicker.Views
             }
         }
 
-
         private void TabItem_Drop(object sender, DragEventArgs e)
         {
             var TabItemSource = e.Data.GetData(typeof(TabItem)) as TabItem;
@@ -163,5 +162,7 @@ namespace CodeLicker.Views
         {
             e.Handled = true;
         }
+        
+        
     }
 }

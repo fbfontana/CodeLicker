@@ -94,9 +94,11 @@
                 Drop="TabItem_Drop"/>
 
         <TabControl Name="TabActivities" Background="Transparent"
-                    Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0"
+                    Grid.Column="1" Grid.Row="1" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0"
                     BorderBrush="White" Margin="0" Padding="0"
-                    ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}">
+                    ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedIndex="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged}">
 
             <TabControl.Resources>
                 

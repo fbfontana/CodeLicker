@@ -106,5 +106,13 @@ namespace CodeLicker.Views
                 AddActivity(new WelcomeActivityVM());
             }
         }
+        private void MenuItem_LicenseClick(object sender, RoutedEventArgs e)
+        {
+            UpdateWorkingArea();
+            if (WorkingAreaVM.Items.Where(f => f is LicenseActivityVM).Count() == 0)
+            {
+                AddActivity(new LicenseActivityVM());
+            }
+        }
     }
 }

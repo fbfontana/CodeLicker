@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CodeLicker.Helpers;
-using CodeLicker.Views;
+using CodeLicker.Data;
 using CLAnalyzer.Models;
+using CodeLicker.Infrastructure;
 
 namespace CodeLicker.ViewModels
 {
@@ -44,7 +45,7 @@ namespace CodeLicker.ViewModels
         }
         public ICommand CloseTabCommand
         {
-            get { return new SingleActiviyDelegateCommand(RemoveActivity); }
+            get { return new SingleActivityDelegateCommand(RemoveActivity); }
         }
         public ICommand OpenClassCommand
         {
@@ -85,5 +86,6 @@ namespace CodeLicker.ViewModels
             Items.Add(new ClassActivityVM(CurrentClass));
             CurrentItem = Items.Count() - 1;
         }
+
     }
 }

@@ -1,0 +1,7 @@
+﻿+ Menu Input Gestures
+  - Make it configurable
++ Dynamic Menu?
++ Dynamic Settings
+  - Make it localized
++ Style grids
++ Change languages

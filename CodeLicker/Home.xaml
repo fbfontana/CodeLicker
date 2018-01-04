@@ -1,0 +1,296 @@
+﻿<Window x:Class="CodeLicker.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeLicker"
+        xmlns:resx="clr-namespace:CodeLicker.Properties"
+        xmlns:Views="clr-namespace:CodeLicker.Views"
+        xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
+        xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" Background="#CF000F"
+        WindowStyle="None" WindowState="Maximized" x:Name="WorkingAreaView"
+      
+        SnapsToDevicePixels="True"
+        RenderOptions.ClearTypeHint="Enabled"
+        Activated="Window_Activated" StateChanged="Window_StateChanged">
+
+    <Window.DataContext>
+        <ViewModels:WorkingAreaVM />
+    </Window.DataContext>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Home.OpenSettingsCommand" CanExecute="OpenSettings_CanExecute" Executed="OpenSettings_Executed"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="local:Home.OpenSettingsCommand" Gesture="Ctrl+B"  />
+    </Window.InputBindings>
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome ResizeBorderThickness="6" CaptionHeight="30" CornerRadius="0,0,0,0" GlassFrameThickness="1" />
+    </shell:WindowChrome.WindowChrome>
+
+    <Grid Name="GrdRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7" Name="FirstColumn"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="9" Name="LastColumn"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9" Name="FirstRow" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="9" Name="LastRow" />
+        </Grid.RowDefinitions>
+
+        <Grid Name="TitleBar" SnapsToDevicePixels="True" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="25" />
+            </Grid.ColumnDefinitions>
+
+            <Canvas Grid.Column="0" Height="25" Width="25" Margin="0" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                <Path Stroke="Transparent" Fill="White" Data="M4 22 L20 22 L20 2 L16 6 L16 18 L8 18 Z" SnapsToDevicePixels="True" Margin="0" UseLayoutRounding="True" />
+            </Canvas>
+            <Label Name="WindowTitle" Grid.Column="1" Content="{x:Static resx:Resources.WindowTitle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="30" Foreground="White" VerticalContentAlignment="Bottom" />
+
+            <Button Name="BtnMinimize" Grid.Column="2" Template="{StaticResource CaptionBarButton}" Click="BtnMinimize_Click">
+                <Button.Content>
+                    <Path Data="M8,16 L16,16"  Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
+                </Button.Content>
+            </Button>
+            <Button Name="BtnMaximize" Grid.Column="3" Template="{StaticResource CaptionBarButton}" Click="BtnMaximize_Click">
+                <Button.Content>
+                    <Path Name="BtnMaximizePath" Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
+                </Button.Content>
+            </Button>
+            <Button Name="BtnClose" Grid.Column="4" Template="{StaticResource CaptionBarButton}" Click="BtnClose_Click">
+                <Button.Content>
+                    <Path Data="M8,16 L16,8 M16,16 L8,8 " Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+
+        <Grid  Grid.Row="2" Grid.Column="1">
+            <Menu>
+                <MenuItem  Header="{x:Static resx:Resources.File}" Click="MenuItem_File_Click">
+                    <MenuItem Header="{x:Static resx:Resources.Open}" >
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/Folder.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="{x:Static resx:Resources.File}" Click="MenuItem_Click" >
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Name="MnuRecentFiles" Header="{x:Static resx:Resources.RecentFiles}" >
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/calendar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Name="MnuSettings" Header="{x:Static resx:Resources.Settings}"  HeaderStringFormat='{}{0}...'
+                              Command="{x:Static local:Home.OpenSettingsCommand}" Template="{StaticResource MenuItemControlTemplate1}"
+                          InputGestureText="Ctrl+B" >
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/Gear.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Name="MnuQuit" Header="{x:Static resx:Resources.Exit}" Click="MnuQuit_Click">
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/Delete.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem  Header="{x:Static resx:Resources.Help}">
+                    <MenuItem Header="{x:Static resx:Resources.License}" Click="MenuItem_LicenseClick" >
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/Policy.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{x:Static resx:Resources.About}" Click="MenuItem_AboutClick" >
+                        <MenuItem.Icon>
+                            <Image SnapsToDevicePixels="True" Source="/CodeLicker;component/Images/Info.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Grid>
+
+        <Grid Name="GrdWorkingArea" Grid.Row="3" Grid.Column="1"
+              VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#6C7A89">
+            <Grid.Resources>
+                <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+                    <Setter Property="Height" Value="14"/>
+                    <Setter Property="Width" Value="14"/>
+                    <Setter Property="Margin" Value="0,0,4,0"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <Path Name="ClosePath" Data="M0,0 L8,8 M0,8 L8,0" Stroke="#F22613" StrokeThickness="1.5" Margin="3" SnapsToDevicePixels="False" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}"  Value="True"/>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background" Value="#F22613"/>
+                                        <Setter TargetName="ClosePath" Property="Stroke" Value="White"/>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}"  Value="False"/>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background" Value="White"/>
+                                        <Setter TargetName="ClosePath" Property="Stroke" Value="#F22613"/>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}"  Value="False"/>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter TargetName="ClosePath" Property="Stroke" Value="White"/>
+                                    </MultiDataTrigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
+            </Grid.ColumnDefinitions>
+
+            <Border Name="BorLeftMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+            <Border Name="BorTopMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="1" Grid.Row="0" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+            <Border Name="BorRightMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+            <Border Name="BorBottomMoveTabToLastPosition" Background="Transparent" 
+                Grid.Column="1" Grid.Row="2" AllowDrop="True" 
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"/>
+
+            <TabControl Name="TabActivities" Background="Transparent"
+                    Grid.Column="1" Grid.Row="1" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0"
+                    BorderBrush="White" Margin="0" Padding="0"
+                    ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedIndex="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged}">
+
+                <TabControl.Resources>
+
+                    <Style TargetType="{x:Type TabControl}">
+                        <Setter Property="AllowDrop" Value="True"/>
+                        <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
+                        <EventSetter Event="Drop" Handler="TabItem_Drop"/>
+                    </Style>
+
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="AllowDrop" Value="True"/>
+                        <EventSetter Event="MouseMove" Handler="TabItem_PreviewMouseMove"/>
+                        <EventSetter Event="Drop" Handler="TabItem_Drop"/>
+
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Margin" Value="-2,-2,0,0" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Grid Name="GrdActivities" Background="Transparent">
+                                        <Border Name="Border" Margin="0,0,0,0" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                            <StackPanel Orientation="Horizontal" >
+                                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2" RecognizesAccessKey="True"/>
+                                                <Button Name="CloseButton" 
+                                                    Command="{Binding  ElementName=WorkingAreaView , Path=DataContext.CloseTabCommand}" 
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabItem}}, Path=DataContext}" 
+                                                    Style="{StaticResource CloseButtonStyle}" >
+                                                </Button>
+                                                <Border Name="BorSingleActivity"
+                                                    HorizontalAlignment="Stretch" Width="8" Background="#6C7A89" Margin="0,0,-4,0" 
+                                                    AllowDrop="True" 
+                                                    PreviewMouseMove="TabItem_PreviewMouseMove"
+                                                    Drop="TabItem_Drop">
+                                                </Border>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="White" />
+                                            <Setter Property="Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="False" />
+                                                <Condition Property="IsMouseOver" Value="True" />
+                                            </MultiTrigger.Conditions>
+                                            <MultiTrigger.Setters>
+                                                <Setter TargetName="Border" Property="Background" Value="#F22613" />
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </MultiTrigger.Setters>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="False" />
+                                                <Condition Property="IsMouseOver" Value="False" />
+                                            </MultiTrigger.Conditions>
+                                            <MultiTrigger.Setters>
+                                                <Setter TargetName="Border" Property="Background" Value="#CF000F" />
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </MultiTrigger.Setters>
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                </TabControl.Resources>
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding TabName}"/>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+
+            </TabControl>
+
+        </Grid>
+
+
+    </Grid>
+
+</Window>

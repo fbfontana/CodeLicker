@@ -5,7 +5,8 @@
              xmlns:local="clr-namespace:CodeLicker"
              xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
              xmlns:Views="clr-namespace:CodeLicker.Views"
-             StartupUri="MainWindow.xaml">
+             xmlns:Controls="clr-namespace:CodeLicker.Controls"
+             StartupUri="Home.xaml">
     <Application.Resources>
         
         <!--<Style TargetType="{x:Type Window}">
@@ -19,6 +20,42 @@
         <Style x:Key="LatoLight">
             <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/Fonts/#Lato Light"/>
         </Style>
+
+        <!--<Style TargetType="{x:Type DataGridRow}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#F22613" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#F22613" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="White" />
+            </Style.Resources>
+        </Style>-->
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="RowBackground" Value="#fff" />
+            <Setter Property="AlternatingRowBackground" Value="#f0f0f0" />
+            <Setter Property="BorderBrush" Value="#CF000F" />
+            <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent" />
+            <Setter Property="RowHeight" Value="25" />
+            <!--<Setter Property="HorizontalAlignment" Value="Stretch" />-->
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="SeparatorBrush" Value="#fff" />
+            <Setter Property="Background" Value="#CF000F" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="SeparatorVisibility" Value="Visible" />
+            <Setter Property="SeparatorBrush" Value="#fff" />
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
+        </Style>
+
 
         <Style TargetType="{x:Type Frame}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -51,6 +88,64 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
+        <ControlTemplate x:Key="DialogButton" TargetType="{x:Type Button}">
+            <Grid Name="Grd" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="75" Height="20"  >
+                <Rectangle Stroke="#6C7A89" x:Name="BackgroundRectangle" Fill="#CF000F" Width="75" HorizontalAlignment="Right"/>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Stretch" Name="Content" TextBlock.Foreground="White"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger SourceName="Grd" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BackgroundRectangle" Property="Fill" Value="#F22613" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="MenuItemControlTemplate1" TargetType="{x:Type MenuItem}">
+            <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <Grid Margin="-1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="Icon" Content="{TemplateBinding Icon}" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                    <Border x:Name="GlyphPanel" BorderBrush="#FF26A0DA" BorderThickness="1" Background="#3D26A0DA" ClipToBounds="False" HorizontalAlignment="Center" Height="22" Margin="-1,0,0,0" Visibility="Hidden" VerticalAlignment="Center" Width="22">
+                        <Path x:Name="Glyph" Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" Fill="#FF212121" FlowDirection="LeftToRight" Height="11" Width="10"/>
+                    </Border>
+                    <ContentPresenter x:Name="menuHeaderContainer" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Grid.Column="2" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="menuGestureText" Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Icon" Value="{x:Null}">
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" TargetName="templateRoot" Value="#3D26A0DA"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF26A0DA"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="Glyph" Value="#FF707070"/>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsHighlighted" Value="True"/>
+                        <Condition Property="IsEnabled" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" TargetName="templateRoot" Value="#0A000000"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="#21000000"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 
         <DataTemplate DataType="{x:Type ViewModels:LicenseActivityVM}">
             <Views:License />
@@ -63,6 +158,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:ClassActivityVM}">
             <Views:Class />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:SettingsVM}">
+            <Views:Settings />
         </DataTemplate>
 
     </Application.Resources>

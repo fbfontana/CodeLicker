@@ -16,6 +16,7 @@ using CodeLicker.Helpers;
 using System.Configuration;
 using System.IO;
 using System.ComponentModel;
+using System.Windows.Xps.Packaging;
 
 namespace CodeLicker.Views
 {
@@ -34,7 +35,10 @@ namespace CodeLicker.Views
             string applicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string myFile = System.IO.Path.Combine(applicationDirectory, ConfigurationManager.AppSettings["WelcomeUrl"]);
 
-            WelcomePage.Navigate(new Uri( myFile));
+            //WelcomePage.Navigate(new Uri( myFile));
+            XpsDocument doc = new XpsDocument(myFile, FileAccess.Read);
+
+            WelcomePage.Document = doc.GetFixedDocumentSequence();
         }
     }
 }

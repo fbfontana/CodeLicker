@@ -15,7 +15,11 @@ namespace CLAnalyzer
     {
         public static List<ClassModel> GetAllClassNames(string filePath)
         {
-            return GetAllClasses(filePath).Select(e =>
+            var Result = GetAllClasses(filePath);
+
+            // no namespace
+
+            return Result.Select(e =>
                     new ClassModel(
                         new List<string>() { filePath },
                         e.Identifier.ToFullString().Trim().Replace(Environment.NewLine, ""),
@@ -26,6 +30,9 @@ namespace CLAnalyzer
         public static List<ClassDeclarationSyntax> GetAllClasses(string filePath)
         {
             var Code = File.ReadAllText(filePath);
+
+            // invalid file or no class
+            
             var Root = CSharpSyntaxTree.ParseText(Code).GetRoot();
             return Root.DescendantNodes().OfType<ClassDeclarationSyntax>().ToList();
         }
@@ -38,7 +45,7 @@ namespace CLAnalyzer
             };
             CurrentFile.Classes = new ObservableCollection<ClassModel>(GetAllClassNames(filePath));
             CurrentFile.ClassTotal.Value = CurrentFile.Classes.Count();
-
+            
             return CurrentFile;
         }
 

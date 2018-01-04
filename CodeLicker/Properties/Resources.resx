@@ -118,28 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About CodeLicker</value>
+    <value>_About CodeLicker</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="ClassName" xml:space="preserve">
     <value>Class name</value>
+  </data>
+  <data name="ClassReport" xml:space="preserve">
+    <value>Class report</value>
   </data>
   <data name="CodeAnalysisReport" xml:space="preserve">
     <value>Code Analysis Report</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>_Exit</value>
   </data>
   <data name="File" xml:space="preserve">
-    <value>File</value>
+    <value>_File</value>
+  </data>
+  <data name="FileReport" xml:space="preserve">
+    <value>File report</value>
   </data>
   <data name="FileType" xml:space="preserve">
     <value>File type</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Help</value>
+    <value>_Help</value>
+  </data>
+  <data name="InternationalSettings" xml:space="preserve">
+    <value>International Settings</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="License" xml:space="preserve">
-    <value>License information</value>
+    <value>_License information</value>
   </data>
   <data name="MethodTotal" xml:space="preserve">
     <value>Method Total</value>
@@ -150,14 +165,20 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Open" xml:space="preserve">
-    <value>Open</value>
+    <value>_Open</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="RecentFiles" xml:space="preserve">
+    <value>_Recent Files</value>
+  </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>_Settings</value>
   </data>
   <data name="Valid" xml:space="preserve">
     <value>Valid</value>

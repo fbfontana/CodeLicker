@@ -118,37 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Informazioni su CodeLicker</value>
+    <value>I_nformazioni su CodeLicker</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
   </data>
   <data name="ClassName" xml:space="preserve">
     <value>Nome</value>
+  </data>
+  <data name="ClassReport" xml:space="preserve">
+    <value>Analisi della classe</value>
   </data>
   <data name="CodeAnalysisReport" xml:space="preserve">
     <value>Analisi del codice</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Esci</value>
+    <value>_Esci</value>
+  </data>
+  <data name="FileReport" xml:space="preserve">
+    <value>Analisi del file</value>
   </data>
   <data name="FileType" xml:space="preserve">
     <value>Tipo di file</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>Ai_uto</value>
+  </data>
+  <data name="InternationalSettings" xml:space="preserve">
+    <value>Impostazioni internazionali</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Lingua</value>
   </data>
   <data name="License" xml:space="preserve">
-    <value>Informazioni sulla licenza</value>
+    <value>Informazioni sulla _licenza</value>
   </data>
   <data name="MethodTotal" xml:space="preserve">
     <value>Totale metodi</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Apri</value>
+    <value>_Apri</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Percorso</value>
   </data>
+  <data name="RecentFiles" xml:space="preserve">
+    <value>File _recenti</value>
+  </data>
   <data name="Settings" xml:space="preserve">
-    <value>Impostazioni</value>
+    <value>_Impostazioni</value>
   </data>
   <data name="Valid" xml:space="preserve">
     <value>Valido</value>

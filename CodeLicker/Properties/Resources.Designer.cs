@@ -70,11 +70,20 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About CodeLicker.
+        ///   Looks up a localized string similar to _About CodeLicker.
         /// </summary>
         public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -88,6 +97,15 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Class report.
+        /// </summary>
+        public static string ClassReport {
+            get {
+                return ResourceManager.GetString("ClassReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code Analysis Report.
         /// </summary>
         public static string CodeAnalysisReport {
@@ -97,7 +115,7 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit.
+        ///   Looks up a localized string similar to _Exit.
         /// </summary>
         public static string Exit {
             get {
@@ -106,11 +124,20 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File.
+        ///   Looks up a localized string similar to _File.
         /// </summary>
         public static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File report.
+        /// </summary>
+        public static string FileReport {
+            get {
+                return ResourceManager.GetString("FileReport", resourceCulture);
             }
         }
         
@@ -124,7 +151,7 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to _Help.
         /// </summary>
         public static string Help {
             get {
@@ -133,7 +160,25 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License information.
+        ///   Looks up a localized string similar to International Settings.
+        /// </summary>
+        public static string InternationalSettings {
+            get {
+                return ResourceManager.GetString("InternationalSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _License information.
         /// </summary>
         public static string License {
             get {
@@ -169,7 +214,16 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open.
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Open.
         /// </summary>
         public static string Open {
             get {
@@ -187,7 +241,16 @@ namespace CodeLicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to _Recent Files.
+        /// </summary>
+        public static string RecentFiles {
+            get {
+                return ResourceManager.GetString("RecentFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Settings.
         /// </summary>
         public static string Settings {
             get {

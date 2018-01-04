@@ -10,8 +10,8 @@ namespace CLAnalyzer.Types
     {
         private int _Value;
 
-        public int? Min { get; private set; }
-        public int? Max { get; private set; }
+        public int? Min { get; set; }
+        public int? Max { get; set; }
         public IEnumerable<int> AllowedValues { get; private set; }
 
         public bool IsValid { get; set; }
@@ -49,6 +49,7 @@ namespace CLAnalyzer.Types
         public ValidatedInt(int? min = null, int? max = null, IEnumerable<int> allowedValues = null)
         {
             IsValid = true;
+            Value = -1;
             Min = min;
             Max = max;
             AllowedValues = allowedValues;

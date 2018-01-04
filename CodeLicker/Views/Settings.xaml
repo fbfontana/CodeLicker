@@ -1,0 +1,91 @@
+﻿<Window x:Class="CodeLicker.Views.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeLicker.Views" 
+        xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+        xmlns:resx="clr-namespace:CodeLicker.Properties"
+        xmlns:ViewModels="clr-namespace:CodeLicker.ViewModels"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#CF000F" 
+        BorderThickness="1" BorderBrush="#CF000F"
+        WindowStyle="None" Name="SettingsView"
+        SnapsToDevicePixels="True"
+        RenderOptions.ClearTypeHint="Enabled"
+        xmlns:p="clr-namespace:CodeLicker.Properties"
+        xmlns:Controls="clr-namespace:CodeLicker.Controls"
+        Height="600" Width="800">
+    <!--6C7A89-->
+    
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome ResizeBorderThickness="0" CaptionHeight="30" CornerRadius="0,0,0,0" GlassFrameThickness="1" />
+    </shell:WindowChrome.WindowChrome>
+
+    <Grid Background="#f0f0f0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7" Name="FirstColumn"/>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="9" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="9" Name="LastColumn"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="9"  />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="9"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="9" Name="LastRow" />
+        </Grid.RowDefinitions>
+
+        <Grid Name="TitleBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+              SnapsToDevicePixels="True" Background="#CF000F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="25" />
+            </Grid.ColumnDefinitions>
+
+            <Label Name="WindowTitle" Grid.Column="1" Content="{x:Static p:Resources.Settings}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="30" Foreground="White" VerticalContentAlignment="Bottom" />
+
+            <Button Name="BtnClose" Grid.Column="6" Template="{StaticResource CaptionBarButton}" Click="BtnClose_Click">
+                <Button.Content>
+                    <Path Data="M8,16 L16,8 M16,16 L8,8 " Stroke="White" StrokeThickness="1.5" Panel.ZIndex="1" SnapsToDevicePixels="False" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
+                </Button.Content>
+            </Button>
+
+        </Grid>
+
+        <TreeView Name="TrvSettins" HorizontalAlignment="Stretch" 
+                      Grid.Row="2" Grid.Column="1" Grid.RowSpan="3">
+            <!--<TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>-->
+
+            <TreeViewItem Name="TviInternationalSettings" Header="{x:Static resx:Resources.InternationalSettings}" 
+                          IsSelected="False" Selected="TviInternationalSettings_Selected"/>
+
+        </TreeView>
+        <StackPanel Grid.Column="3" Grid.Row="4"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                 Background="Transparent" Orientation="Horizontal" FlowDirection="RightToLeft" >
+            <!--<TextBox Text="{Binding Namespace, UpdateSourceTrigger=PropertyChanged}" />-->
+            <Button Name="BtnCancel" Content="{x:Static p:Resources.Cancel}" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Template="{DynamicResource DialogButton}" IsCancel="True"/>
+            <Button Name="BtnOK"     Content="{x:Static p:Resources.OK}"     HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Template="{DynamicResource DialogButton}"  Margin="9,0,0,0" IsDefault="True" Click="BtnOK_Click" Command="{Binding ElementName=SettingsView, Path=DataContext.SaveCommand}" />
+        </StackPanel>
+
+        <Grid Name="GrdSettings" Grid.Column="3" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+    </Grid>
+</Window>

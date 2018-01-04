@@ -1,7 +1,10 @@
-﻿using System;
+﻿using CodeLicker.Data;
+using CodeLicker.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,11 +19,9 @@ namespace CodeLicker
     {
         public App()
         {
-            //InitializeComponent();
-            //FrameworkElement.StyleProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata
-            //{
-            //    DefaultValue = FindResource(typeof(Window))
-            //});
+            DBManager.Context = new CLDBEntities();
+            Thread.CurrentThread.CurrentUICulture = 
+                new CultureInfo(DBManager.Context.GUILanguages.First(e => e.IsDefault).Culture);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CodeLicker.ViewModels
     public class LicenseActivityVM : ActivityVM
     {
         #region Constants
-        readonly string ActivityName = Resources.License;
+        readonly string ActivityName = Resources.License.Replace("_", "");
         #endregion
         public LicenseActivityVM()
         {

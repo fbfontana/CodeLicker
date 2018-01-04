@@ -10,9 +10,9 @@
       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
       >
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">-->
 
-        <Grid Name="TabContent" Background="White" MinWidth="600">
+        <Grid Name="TabContent" Background="White" MinWidth="600" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15" />
                 <RowDefinition Height="50" />
@@ -34,11 +34,11 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" 
-                     Text="{x:Static p:Resources.CodeAnalysisReport}" 
+                     Text="{x:Static p:Resources.FileReport}" 
                      HorizontalContentAlignment="Center"
                      BorderThickness="0"
                      Style="{DynamicResource LatoLight}" Foreground="#CF000F"
-                     FontSize="36"/>
+                     FontSize="36" IsReadOnly="True"/>
             <Separator Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Background="#CF000F"/>
 
             <Label Content="{x:Static p:Resources.Path}" Foreground="#CF000F" 
@@ -65,22 +65,17 @@
             <DataGrid AutoGenerateColumns="False" CanUserAddRows="false" 
                       ItemsSource="{Binding Classes}"
                       Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      RowHeaderWidth="0" Margin="5,4,-5,0"
-                      >
+                      RowHeaderWidth="0" Margin="5,4,-5,0" >
                 <DataGrid.Columns>
-                    <!--<DataGridHyperlinkColumn Header="{x:Static p:Resources.ClassName}" Width="*" IsReadOnly="True" 
-                                             Binding="{Binding Path=Name}"/>-->
                     <DataGridTemplateColumn Header="{x:Static p:Resources.ClassName}" Width="*" IsReadOnly="True" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock>
-                                <Hyperlink Command="{Binding ElementName=WorkingAreaView , Path=DataContext.OpenClassCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}">
-                                    <!--CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self, AncestorType={x:Type UserControl}}, Path=DataContext}"--> 
-                     <TextBlock Text="{Binding Path=Name}" />
-                       </Hyperlink>
-                     </TextBlock>
+                                    <Hyperlink Command="{Binding ElementName=WorkingAreaView , Path=DataContext.OpenClassCommand}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}">
+                                        <TextBlock Text="{Binding Path=Name}" />
+                                    </Hyperlink>
+                                </TextBlock>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -93,5 +88,5 @@
 
         </Grid>
 
-    </ScrollViewer>
+    <!--</ScrollViewer>-->
 </UserControl>

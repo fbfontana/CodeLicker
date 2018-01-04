@@ -14,7 +14,8 @@
     </UserControl.DataContext>
 
     <Grid Name="TabContent" Background="White">
-        <WebBrowser Name="WelcomePage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <!--<WebBrowser Name="WelcomePage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
+        <DocumentViewer Name="WelcomePage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
     </Grid>
 </UserControl>
